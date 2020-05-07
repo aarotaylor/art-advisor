@@ -23,13 +23,18 @@ function IsAlbums(props){
   
   else{
     return(
-      <ul>
+      <table>
         {albums.map(item => (
-          <li key={item['title']}>
-            <a target="_blank" rel="noopener noreferrer" href={item['url']}>{item['rank']+' '+item['title']}</a>
-          </li>
+          <tr key={item['title']}>
+
+            <td>{item['rank']}</td>
+            <td>
+              <a target="_blank" rel="noopener noreferrer" href={item['url']}>{item['title']}</a>
+            </td>
+            
+          </tr>
         ))}
-      </ul>
+      </table>
     ) 
   }
 }
@@ -41,7 +46,7 @@ class Fields extends React.Component{
           name: '', 
           period: 'overall',
           limit: 10,
-          albums: [{title: "yet, try submitting something", rank: "Nothing"}],
+          albums: [{title: "", rank: "Nothing yet, try submitting something"}],
           error: ''
       };
 
@@ -91,7 +96,7 @@ class Fields extends React.Component{
     this.resetAlbums();
     const { name, period, limit } = this.state;
     axios
-      .post('https://silver-glass.herokuapp.com/query', { name, period, limit }) //tmp change. try and revert to just '/query' https://art-advisor.herokuapp.com
+      .post('https://silver-glass.herokuapp.com/query', { name, period, limit })
       .then(res => {
         if (!res.data.hasOwnProperty('name')){
           console.log(res);
