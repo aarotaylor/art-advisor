@@ -91,7 +91,7 @@ class Fields extends React.Component{
     this.resetAlbums();
     const { name, period, limit } = this.state;
     axios
-      .post('https://art-advisor.herokuapp.com/query', { name, period, limit }) //tmp change. try and revert to just '/query' https://art-advisor.herokuapp.com
+      .post('https://silver-glass.herokuapp.com/query', { name, period, limit }) //tmp change. try and revert to just '/query' https://art-advisor.herokuapp.com
       .then(res => {
         if (!res.data.hasOwnProperty('name')){
           console.log(res);
