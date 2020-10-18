@@ -96,10 +96,11 @@ class Fields extends React.Component{
     this.resetAlbums();
     const { name, period, limit } = this.state;
     axios
-      .post('https://silver-glass.herokuapp.com/query', { name, period, limit })
+      .post('/query', { name, period, limit }) // Testing: https://localhost:80/query | production: https://silver-glass.herokuapp.com/query
       .then(res => {
+        console.log(res);
+        /*/ Temporary comment out. only until new response format can be generated
         if (!res.data.hasOwnProperty('name')){
-          console.log(res);
           var albumList = res.data.topalbums.album;
 
           albumList.forEach(element => {
@@ -115,11 +116,12 @@ class Fields extends React.Component{
           });
           console.log(this.state.albums);
         }
+        
         // Error handling
         else{
           this.errorOccur(res.data.name+": "+res.data.message)
         }
-
+        //*/
       })
       .catch(err => {
         console.error(err);
@@ -147,7 +149,6 @@ class Fields extends React.Component{
                     <option value='30'>30</option>
                     <option value='40'>40</option>
                     <option value='50'>50</option>
-                    <option value='100'>100</option>
                 </select>
 
                 <label>Period:</label>
