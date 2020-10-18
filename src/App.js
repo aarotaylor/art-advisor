@@ -96,7 +96,7 @@ class Fields extends React.Component{
     this.resetAlbums();
     const { name, period, limit } = this.state;
     axios
-      .post('/query', { name, period, limit }) // Testing: https://localhost:80/query | production: https://silver-glass.herokuapp.com/query
+      .post('https://silver-glass.herokuapp.com/query', { name, period, limit }) // Testing: https://localhost:80/query | production: https://silver-glass.herokuapp.com/query
       .then(res => {
         console.log(res);
         // Temporary comment out. only until new response format can be generated
