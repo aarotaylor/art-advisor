@@ -99,7 +99,7 @@ class Fields extends React.Component{
       .post('/query', { name, period, limit }) // Testing: https://localhost:80/query | production: https://silver-glass.herokuapp.com/query
       .then(res => {
         console.log(res);
-        /*/ Temporary comment out. only until new response format can be generated
+        // Temporary comment out. only until new response format can be generated
         if (!res.data.hasOwnProperty('name')){
           var albumList = res.data.topalbums.album;
 
